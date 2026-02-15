@@ -31,20 +31,24 @@
                 <label>📍 Current Location:</label>
                 <select id="sourceSelect">
                     <option value="entry">Entry Gate</option>
-                    <option value="p1">Platform 1</option>
-                    <option value="p2">Platform 2</option>
-                    <option value="food">Food Court</option>
+                    <option value="platform1">Platform 1</option>
+                    <option value="platform2">Platform 2</option>
+                    <option value="foodcourt">Food Court</option>
+                    <option value="toilet">Toilet</option>
+                    <option value="foodcourt">Food Court</option>
+                    <option value="help">Help Desk</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>🏁 Destination:</label>
                 <select id="destSelect">
-                    <option value="p1">Platform 1</option>
-                    <option value="p2">Platform 2</option>
-                    <option value="p3">Platform 3</option>
+                    <option value="entry">Entry Gate</option>
+                    <option value="platform1">Platform 1</option>
+                    <option value="platform2">Platform 2</option>
+                    <option value="platform3">Platform 3</option>
                     <option value="toilet">Toilet</option>
-                    <option value="food">Food Court</option>
+                    <option value="foodcourt">Food Court</option>
                     <option value="help">Help Desk</option>
                 </select>
             </div>
@@ -72,8 +76,7 @@
         <main class="map-container">
             <div class="map-wrapper">
                 <img src="station_map.jpg" alt="Station Map" id="stationMap">
-                <svg id="mapOverlay" viewBox="0 0 1000 700">
-                    </svg>
+                <svg id="mapOverlay" viewBox="0 0 1000 600" preserveAspectRatio="none"></svg>
                 <div id="pin" class="pin"></div>
             </div>
         </main>
