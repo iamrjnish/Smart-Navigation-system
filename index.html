@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Station Nav</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🚆 Smart Railway Navigator</h1>
+        <p>Accessible Indoor Navigation System</p>
+    </header>
+
+    <div class="container">
+        <aside class="controls">
+            
+            <div class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="accessibilityToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">♿ Accessibility Mode (Wheelchair/Elderly)</span>
+            </div>
+
+            <hr>
+
+            <h3>Find Route</h3>
+            <div class="form-group">
+                <label>📍 Current Location:</label>
+                <select id="sourceSelect">
+                    <option value="entry">Entry Gate</option>
+                    <option value="p1">Platform 1</option>
+                    <option value="p2">Platform 2</option>
+                    <option value="food">Food Court</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>🏁 Destination:</label>
+                <select id="destSelect">
+                    <option value="p1">Platform 1</option>
+                    <option value="p2">Platform 2</option>
+                    <option value="p3">Platform 3</option>
+                    <option value="toilet">Toilet</option>
+                    <option value="food">Food Court</option>
+                    <option value="help">Help Desk</option>
+                </select>
+            </div>
+
+            <button onclick="findRoute()" class="btn-primary">Show Route</button>
+
+            <hr>
+
+            <h3>Facility Finder</h3>
+            <div class="grid-buttons">
+                <button onclick="highlightFacility('toilet')" class="btn-facility">🚻 Toilet</button>
+                <button onclick="highlightFacility('lift')" class="btn-facility">🛗 Lift</button>
+                <button onclick="highlightFacility('medical')" class="btn-facility">🚑 Medical</button>
+                <button onclick="highlightFacility('food')" class="btn-facility">🍔 Food</button>
+            </div>
+
+            <div class="legend">
+                <h4>Map Legend</h4>
+                <div class="legend-item"><span class="dot normal"></span> Normal Route (Stairs)</div>
+                <div class="legend-item"><span class="dot access"></span> Accessible Route (Lifts/Ramps)</div>
+                <div class="legend-item"><span class="dot location"></span> Current Location</div>
+            </div>
+        </aside>
+
+        <main class="map-container">
+            <div class="map-wrapper">
+                <img src="station_map.jpg" alt="Station Map" id="stationMap">
+                <svg id="mapOverlay" viewBox="0 0 1000 700">
+                    </svg>
+                <div id="pin" class="pin"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
