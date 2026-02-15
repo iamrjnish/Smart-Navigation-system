@@ -4,8 +4,8 @@
 body { 
     background-color: #f4f7f6; 
     color: #333; 
-    height: 100vh; /* Force body to be exactly screen height */
-    overflow: hidden; /* Disable main scrollbar */
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -13,17 +13,17 @@ body {
 header {
     background-color: #2c3e50;
     color: white;
-    padding: 10px 20px; /* Reduced padding to save space */
+    padding: 10px 20px;
     text-align: center;
-    height: 60px; /* Fixed height for header */
+    height: 60px;
     flex-shrink: 0;
 }
 
 /* Layout */
 .container {
     display: flex;
-    flex: 1; /* Fill remaining height */
-    overflow: hidden; /* Prevent container from scrolling */
+    flex: 1;
+    overflow: hidden;
 }
 
 /* Sidebar Controls */
@@ -32,7 +32,7 @@ header {
     background: white;
     padding: 20px;
     border-right: 2px solid #ddd;
-    overflow-y: auto; /* Allow ONLY sidebar to scroll if needed */
+    overflow-y: auto;
     flex-shrink: 0;
     height: 100%;
     z-index: 2;
@@ -89,38 +89,37 @@ input:checked + .slider { background-color: #8e44ad; }
 input:checked + .slider:before { transform: translateX(16px); }
 .toggle-label { font-size: 0.9rem; font-weight: bold;}
 
-/* --- FIX FOR MAP OVERFLOW --- */
+/* --- FIX FOR MAP OVERFLOW & ALIGNMENT --- */
 
 .map-container {
     flex-grow: 1;
     background-color: #e0e0e0;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
-    padding: 10px;
-    overflow: hidden; /* Ensure nothing spills out */
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Added padding to prevent edge touching */
+    overflow: auto; /* Allow scroll if image is huge */
     position: relative;
 }
 
 .map-wrapper {
     position: relative;
-    /* This ensures the wrapper shrinks to fit the image dimensions */
-    display: inline-flex; 
-    line-height: 0; /* Remove potential gap at bottom of image */
+    /* CHANGED: inline-block ensures the wrapper shrinks to the image size exactly */
+    display: inline-block; 
+    line-height: 0; 
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    /* Ensure wrapper doesn't exceed container */
+    max-width: 100%;
+    max-height: 90vh;
 }
 
 #stationMap {
-    /* The image is the boss of the size */
     display: block;
+    /* CHANGED: Image dictates the size */
     width: auto; 
     height: auto;
-    
-    /* CONSTRAINTS: Never bigger than the screen area */
     max-width: 100%;
-    max-height: 85vh; /* Limits height to 85% of view height */
-    
-    object-fit: contain;
+    max-height: 85vh; 
 }
 
 /* SVG Overlay */
@@ -128,12 +127,14 @@ input:checked + .slider:before { transform: translateX(16px); }
     position: absolute;
     top: 0;
     left: 0;
+    /* CHANGED: Strict 100% fill */
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 1;
 }
 
-/* Animations & Pin (Same as before) */
+/* Animations & Pin */
 .route-line {
     fill: none;
     stroke-width: 6;
@@ -155,7 +156,176 @@ input:checked + .slider:before { transform: translateX(16px); }
     border-radius: 50%;
     border: 3px solid white;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: translate(-50%, -50%); /* Centers the pin on the coordinate */
+    display: none;
+    z-index: 10;
+}
+.pin::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background-color: red;/* General Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body { 
+    background-color: #f4f7f6; 
+    color: #333; 
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar Controls */
+.controls {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-right: 2px solid #ddd;
+    overflow-y: auto;
+    flex-shrink: 0;
+    height: 100%;
+    z-index: 2;
+}
+
+h3 { margin-bottom: 10px; color: #2c3e50; }
+hr { margin: 15px 0; border: 0; border-top: 1px solid #eee; }
+
+.form-group { margin-bottom: 10px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem;}
+select { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+.btn-primary:hover { background-color: #219150; }
+
+.grid-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btn-facility {
+    padding: 8px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.btn-facility:hover { background-color: #2980b9; }
+
+/* Legend */
+.legend { margin-top: 15px; font-size: 13px; background: #eee; padding: 10px; border-radius: 5px; }
+.legend-item { display: flex; align-items: center; margin-bottom: 5px; }
+.dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+.dot.normal { background-color: #e67e22; }
+.dot.access { background-color: #8e44ad; }
+.dot.location { background-color: #e74c3c; }
+
+/* Toggle Switch */
+.toggle-container { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.switch { position: relative; display: inline-block; width: 34px; height: 18px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #8e44ad; }
+input:checked + .slider:before { transform: translateX(16px); }
+.toggle-label { font-size: 0.9rem; font-weight: bold;}
+
+/* --- FIX FOR MAP OVERFLOW & ALIGNMENT --- */
+
+.map-container {
+    flex-grow: 1;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Added padding to prevent edge touching */
+    overflow: auto; /* Allow scroll if image is huge */
+    position: relative;
+}
+
+.map-wrapper {
+    position: relative;
+    /* CHANGED: inline-block ensures the wrapper shrinks to the image size exactly */
+    display: inline-block; 
+    line-height: 0; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    /* Ensure wrapper doesn't exceed container */
+    max-width: 100%;
+    max-height: 90vh;
+}
+
+#stationMap {
+    display: block;
+    /* CHANGED: Image dictates the size */
+    width: auto; 
+    height: auto;
+    max-width: 100%;
+    max-height: 85vh; 
+}
+
+/* SVG Overlay */
+#mapOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* CHANGED: Strict 100% fill */
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Animations & Pin */
+.route-line {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 20;
+    animation: dash 2s linear infinite;
+}
+.route-normal { stroke: #e67e22; opacity: 0.8; }
+.route-access { stroke: #8e44ad; opacity: 0.9; stroke-width: 8; }
+
+@keyframes dash { to { stroke-dashoffset: -40; } }
+
+.pin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: translate(-50%, -50%); /* Centers the pin on the coordinate */
     display: none;
     z-index: 10;
 }
@@ -177,9 +347,25 @@ input:checked + .slider:before { transform: translateX(16px); }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    body { height: auto; overflow: auto; } /* Allow scroll on mobile */
+    body { height: auto; overflow: auto; }
     .container { flex-direction: column; height: auto; }
     .controls { width: 100%; height: auto; border-right: none; border-bottom: 2px solid #ddd; }
-    .map-container { height: 60vh; }
-    #stationMap { max-height: 100%; } /* On mobile, fill the container height */
+    .map-container { height: 60vh; align-items: flex-start; } /* Align top on mobile */
+    #stationMap { max-height: none; width: 100%; } /* Fill width on mobile */
+}
+    opacity: 0.5;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body { height: auto; overflow: auto; }
+    .container { flex-direction: column; height: auto; }
+    .controls { width: 100%; height: auto; border-right: none; border-bottom: 2px solid #ddd; }
+    .map-container { height: 60vh; align-items: flex-start; } /* Align top on mobile */
+    #stationMap { max-height: none; width: 100%; } /* Fill width on mobile */
 }
