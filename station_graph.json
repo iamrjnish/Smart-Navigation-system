@@ -89,6 +89,15 @@
     "entry_to_help_11": { "x": 812, "y": 315, "type": "waypoint" },
     "help": { "x": 810, "y": 402, "type": "destination" },
 
+    "//": "--- ROUTE: entry TO waitingarea ---",
+    
+  "entry_to_waitingarea_1": { "x": 366, "y": 438, "type": "waypoint" },
+  "entry_to_waitingarea_2": { "x": 373, "y": 471, "type": "waypoint" },
+  "entry_to_waitingarea_3": { "x": 530, "y": 476, "type": "waypoint" },
+  "entry_to_waitingarea_4": { "x": 807, "y": 470, "type": "waypoint" },
+  "entry_to_waitingarea_5": { "x": 807, "y": 318, "type": "waypoint" },
+  
+
     "//": "--- ROUTE: PLATFORM 1 TO PLATFORM 2 ---",
     "platform1_to_platform2_1": { "x": 458, "y": 174, "type": "waypoint" },
     "platform1_to_platform2_2": { "x": 458, "y": 85, "type": "waypoint" },
@@ -186,6 +195,14 @@
     { "from": "entry_to_help_9", "to": "entry_to_help_10", "dist": 77, "access": true },
     { "from": "entry_to_help_10", "to": "entry_to_help_11", "dist": 81, "access": true },
     { "from": "entry_to_help_11", "to": "help", "dist": 87, "access": true },
+
+    { "from": "entry", "to": "entry_to_waitingarea_1", "dist": 84, "access": true },
+  { "from": "entry_to_waitingarea_1", "to": "entry_to_waitingarea_2", "dist": 34, "access": true },
+  { "from": "entry_to_waitingarea_2", "to": "entry_to_waitingarea_3", "dist": 157, "access": true },
+  { "from": "entry_to_waitingarea_3", "to": "entry_to_waitingarea_4", "dist": 277, "access": true },
+  { "from": "entry_to_waitingarea_4", "to": "entry_to_waitingarea_5", "dist": 152, "access": true },
+  { "from": "entry_to_waitingarea_5", "to": "waitingarea", "dist": 46, "access": true },
+
 
     { "from": "platform1", "to": "platform1_to_platform2_1", "dist": 104, "access": true },
     { "from": "platform1_to_platform2_1", "to": "platform1_to_platform2_2", "dist": 89, "access": true },
