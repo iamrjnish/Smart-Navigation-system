@@ -11,12 +11,12 @@
     "platform1": { "x": 483, "y": 278, "type": "destination" },
 
     "//": "--- ROUTE: Security Check 1 TO Waiting Area 3 ---",
-     "securitycheck": { "x": 416, "y": 380, "type": "waypoint" },
-  "securitycheck_to_waitingarea_1": { "x": 426, "y": 475, "type": "waypoint" },
-  "securitycheck_to_waitingarea_2": { "x": 734, "y": 470, "type": "waypoint" },
-  "securitycheck_to_waitingarea_3": { "x": 809, "y": 459, "type": "waypoint" },
-  "securitycheck_to_waitingarea_4": { "x": 806, "y": 326, "type": "waypoint" },
-  "waitingarea": { "x": 762, "y": 326, "type": "waypoint" },
+    "securitycheck": { "x": 416, "y": 380, "type": "waypoint" },
+    "securitycheck_to_waitingarea_1": { "x": 426, "y": 475, "type": "waypoint" },
+    "securitycheck_to_waitingarea_2": { "x": 734, "y": 470, "type": "waypoint" },
+    "securitycheck_to_waitingarea_3": { "x": 809, "y": 459, "type": "waypoint" },
+    "securitycheck_to_waitingarea_4": { "x": 806, "y": 326, "type": "waypoint" },
+    "waitingarea": { "x": 762, "y": 326, "type": "waypoint" },
 
 
 
@@ -42,7 +42,7 @@
 
     "//": "--- ROUTE: PLATFORM 1 TO PLATFORM 3 ---",
     "foodcourt_to_platform3_1": { "x": 806, "y": 344, "type": "waypoint" },
-  "foodcourt_to_platform3_2": { "x": 803, "y": 239, "type": "waypoint" },
+    "foodcourt_to_platform3_2": { "x": 803, "y": 239, "type": "waypoint" },
 
 
 
@@ -89,13 +89,12 @@
     "entry_to_help_11": { "x": 812, "y": 315, "type": "waypoint" },
     "help": { "x": 810, "y": 402, "type": "destination" },
 
-    "//": "--- ROUTE: entry TO waitingarea ---",
-    
-  "entry_to_waitingarea_1": { "x": 366, "y": 438, "type": "waypoint" },
-  "entry_to_waitingarea_2": { "x": 373, "y": 471, "type": "waypoint" },
-  "entry_to_waitingarea_3": { "x": 530, "y": 476, "type": "waypoint" },
-  "entry_to_waitingarea_4": { "x": 807, "y": 470, "type": "waypoint" },
-  "entry_to_waitingarea_5": { "x": 807, "y": 318, "type": "waypoint" },
+    "//": "--- ROUTE: entry TO waitingarea ---", 
+    "entry_to_waitingarea_1": { "x": 366, "y": 438, "type": "waypoint" },
+    "entry_to_waitingarea_2": { "x": 373, "y": 471, "type": "waypoint" },
+    "entry_to_waitingarea_3": { "x": 530, "y": 476, "type": "waypoint" },
+    "entry_to_waitingarea_4": { "x": 807, "y": 470, "type": "waypoint" },
+    "entry_to_waitingarea_5": { "x": 807, "y": 318, "type": "waypoint" },
   
 
     "//": "--- ROUTE: PLATFORM 1 TO PLATFORM 2 ---",
@@ -127,11 +126,11 @@
     { "from": "entry_to_platform1_3", "to": "entry_to_platform1_4", "dist": 65, "access": true },
     { "from": "entry_to_platform1_4", "to": "platform1", "dist": 81, "access": true },
 
-{ "from": "securitycheck", "to": "securitycheck_to_waitingarea_1", "dist": 96, "access": true },
- { "from": "securitycheck_to_waitingarea_1", "to": "securitycheck_to_waitingarea_2", "dist": 308, "access": true },
-  { "from": "securitycheck_to_waitingarea_2", "to": "securitycheck_to_waitingarea_3", "dist": 76, "access": true },
-  { "from": "securitycheck_to_waitingarea_3", "to": "securitycheck_to_waitingarea_4", "dist": 133, "access": true },
-  { "from": "securitycheck_to_waitingarea_4", "to": "waitingarea", "dist": 44, "access": true },
+    { "from": "securitycheck", "to": "securitycheck_to_waitingarea_1", "dist": 96, "access": true },
+    { "from": "securitycheck_to_waitingarea_1", "to": "securitycheck_to_waitingarea_2", "dist": 308, "access": true },
+    { "from": "securitycheck_to_waitingarea_2", "to": "securitycheck_to_waitingarea_3", "dist": 76, "access": true },
+    { "from": "securitycheck_to_waitingarea_3", "to": "securitycheck_to_waitingarea_4", "dist": 133, "access": true },
+    { "from": "securitycheck_to_waitingarea_4", "to": "waitingarea", "dist": 44, "access": true },
 
     { "from": "entry", "to": "entry_to_platform2_1", "dist": 80, "access": true },
     { "from": "entry_to_platform2_1", "to": "entry_to_platform2_2", "dist": 71, "access": true },
@@ -141,9 +140,9 @@
     { "from": "entry_to_platform2_5", "to": "entry_to_platform2_6", "dist": 134, "access": true },
     { "from": "entry_to_platform2_6", "to": "platform2", "dist": 157, "access": true },
 
-     { "from": "foodcourt", "to": "foodcourt_to_platform3_1", "dist": 26, "access": true },
-  { "from": "foodcourt_to_platform3_1", "to": "foodcourt_to_platform3_2", "dist": 105, "access": true },
-  { "from": "foodcourt_to_platform3_2", "to": "platform3", "dist": 117, "access": true },
+    { "from": "foodcourt", "to": "foodcourt_to_platform3_1", "dist": 26, "access": true },
+    { "from": "foodcourt_to_platform3_1", "to": "foodcourt_to_platform3_2", "dist": 105, "access": true },
+    { "from": "foodcourt_to_platform3_2", "to": "platform3", "dist": 117, "access": true },
 
 
     { "from": "entry", "to": "entry_to_platform3_1", "dist": 87, "access": true },
@@ -197,11 +196,11 @@
     { "from": "entry_to_help_11", "to": "help", "dist": 87, "access": true },
 
     { "from": "entry", "to": "entry_to_waitingarea_1", "dist": 84, "access": true },
-  { "from": "entry_to_waitingarea_1", "to": "entry_to_waitingarea_2", "dist": 34, "access": true },
-  { "from": "entry_to_waitingarea_2", "to": "entry_to_waitingarea_3", "dist": 157, "access": true },
-  { "from": "entry_to_waitingarea_3", "to": "entry_to_waitingarea_4", "dist": 277, "access": true },
-  { "from": "entry_to_waitingarea_4", "to": "entry_to_waitingarea_5", "dist": 152, "access": true },
-  { "from": "entry_to_waitingarea_5", "to": "waitingarea", "dist": 46, "access": true },
+    { "from": "entry_to_waitingarea_1", "to": "entry_to_waitingarea_2", "dist": 34, "access": true },
+    { "from": "entry_to_waitingarea_2", "to": "entry_to_waitingarea_3", "dist": 157, "access": true },
+    { "from": "entry_to_waitingarea_3", "to": "entry_to_waitingarea_4", "dist": 277, "access": true },
+    { "from": "entry_to_waitingarea_4", "to": "entry_to_waitingarea_5", "dist": 152, "access": true },
+    { "from": "entry_to_waitingarea_5", "to": "waitingarea", "dist": 46, "access": true },
 
 
     { "from": "platform1", "to": "platform1_to_platform2_1", "dist": 104, "access": true },
@@ -222,3 +221,4 @@
 
   ]
 }
+
